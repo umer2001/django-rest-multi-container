@@ -1,16 +1,59 @@
 {
   "AWSEBDockerrunVersion": 2,
+  "volumes": [
+    {
+      "name": "postgres-data",
+      "host": {
+        "sourcePath": "/var/app/current/db/movies/var/lib/postgresql/data"
+      }
+    }
+  ],
   "containerDefinitions": [
+    {
+      "name": "postgres",
+      "image": "postgres",
+      "essential": true,
+      "memory": 128,
+      "environment": [
+        {
+          "name": "POSTGRES_PASSWORD",
+          "value": "helloWorld"
+        }
+      ]
+    },
     {
       "name": "django-app",
       "image": "umer2001/django-movies",
       "essential": true,
       "memory": 128,
+      "mountPoints": [
+        {
+          "sourceVolume": "postgres-data",
+          "containerPath": "/var/lib/postgresql/data"
+        }
+      ],
       "portMappings": [
         {
           "hostPort": 80,
           "containerPort": 8000
         }
+      ],
+      "environment": [
+        {
+          "name": "ENVIRONMENT",
+          "value": "prod"
+        },
+        {
+          "name": "DB_HOST",
+          "value": "postgres"
+        },
+        {
+          "name": "DB_PORT",
+          "value": 5432
+        }
+      ],
+      "links": [
+        "postgres"
       ]
     }
   ]
