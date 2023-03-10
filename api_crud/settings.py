@@ -28,7 +28,8 @@ SECRET_KEY = 'ftov1!91yf@7f7&g2%*@0_e^)ac&f&9jeloc@#v76#^b1dhbl#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*.sappay.net",
+                 "test-dev22.us-east-1.elasticbeanstalk.com", "localhost"]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -91,11 +92,34 @@ WSGI_APPLICATION = 'api_crud.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
+
+DATABASE_OPTIONS = {
+    'sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    },
+    'postgres': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DB'),
+        'USER': os.environ.get('POSTGRES_USER', "root"),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
+        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
+    },
+}
+
+DATABASE_ENV_MAP = {
+    'test': 'sqlite',
+    'default': 'sqlite',
+    'prod': 'postgres'
+}
+
+for key in DATABASE_ENV_MAP.keys():
+    if os.environ.get("ENVIRONMENT", "default").lower().startswith(key):
+        DB = DATABASE_ENV_MAP[key]
+
+DATABASES = {
+    'default': DATABASE_OPTIONS[DB]
 }
 
 

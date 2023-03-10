@@ -3,6 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from django_filters import rest_framework as filters
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.db import connection
 import os
 from .models import Movie
 from .permissions import IsOwnerOrReadOnly
@@ -32,3 +33,21 @@ class RetrieveUpdateDestroyMovieAPIView(RetrieveUpdateDestroyAPIView):
 class HelloWorld(APIView):
     def get(self, request):
         return Response({'environment': os.environ.get("ENVIRONMENT", "default value")})
+
+class Connection(APIView):
+    def get(self, request):
+        try:
+            # Try to execute a simple SQL query to check the connection
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT 1")
+                row = cursor.fetchone()
+            if row[0] == 1:
+                return Response({
+                'environment': os.environ.get("ENVIRONMENT", "default value"),
+                'database': "Database connection successfull"
+                })
+        except:
+            return Response({
+                'environment': os.environ.get("ENVIRONMENT", "default value"),
+                'database': "Database connection failed"
+                })
