@@ -1,0 +1,69 @@
+{
+    "family": "midlynk-django-app",
+    "executionRoleArn": "arn:aws:iam::550814420738:role/ecsTaskExecutionRole",
+    "volumes": [],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "networkMode": "awsvpc",
+    "cpu": "1024",
+    "memory": "2048",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "containerDefinitions": [
+        {
+            "name": "nginx",
+            "image": "nginx",
+            "essential": true,
+            "memory": 128,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ]
+        },
+        {
+            "name": "postgres",
+            "image": "postgres",
+            "essential": true,
+            "memory": 128,
+            "environment": [
+                {
+                    "name": "POSTGRES_PASSWORD",
+                    "value": "helloWorld"
+                }
+            ]
+        },
+        {
+            "name": "midlynk-django-app",
+            "image": "umer2001/django-movies",
+            "essential": true,
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "containerPort": 8000
+                }
+            ],
+            "environment": [
+                {
+                    "name": "ENVIRONMENT",
+                    "value": "prod"
+                },
+                {
+                    "name": "DB_HOST",
+                    "value": "127.0.0.1"
+                },
+                {
+                    "name": "DB_PORT",
+                    "value": "5432"
+                }
+            ],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": []
+        }
+    ]
+}

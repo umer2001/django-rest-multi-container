@@ -1,0 +1,638 @@
+{
+    "family": "midlynk-django-support",
+    "executionRoleArn": "arn:aws:iam::550814420738:role/ecsTaskExecutionRole",
+    "taskDefinitionArn": "arn:aws:ecs:ap-southeast-1:550814420738:task-definition/midlynk-django-app:1",
+    "volumes": [],
+    "compatibilities": [
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "1024",
+    "memory": "2048",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "containerDefinitions": [
+        {
+            "name": "redis",
+            "image": "redis",
+            "cpu": 0,
+            "memory": 128,
+            "portMappings": [],
+            "essential": true,
+            "environment": [
+                {
+                    "name": "ERPNEXT_USERNAME_DEV",
+                    "value": "administrator"
+                },
+                {
+                    "name": "DJANGO_SECRET_KEY",
+                    "value": "egNQT9MBeVlYn/AazzfXOONaR+tuzIzsawWUaMUU6T3ZkDE23akudLxoTV4tk6P+"
+                },
+                {
+                    "name": "EMAIL_HOST",
+                    "value": "email-smtp.eu-west-3.amazonaws.com"
+                },
+                {
+                    "name": "DATABASE_URL",
+                    "value": "postgres://SapPay-Staging:AVNS_7c_nZEKzWkUI8HPlxO6@sappay-staging-db-do-user-12029657-0.b.db.ondigitalocean.com:25060/staging"
+                },
+                {
+                    "name": "MOOV_MONEY_AUTHORIZATION",
+                    "value": "Basic U0FQUEFZOjFuR3JVdng1dGdXWndCVg=="
+                },
+                {
+                    "name": "ERPNEXT_PASSWORD_PROD",
+                    "value": "Test@1234"
+                },
+                {
+                    "name": "RDS_PORT",
+                    "value": "5432"
+                },
+                {
+                    "name": "ERPNEXT_PASSWORD_DEV",
+                    "value": "Test@1234"
+                },
+                {
+                    "name": "ERPNEXT_BASE_URL_DEV",
+                    "value": "https://stage.accounts.sappay.net"
+                },
+                {
+                    "name": "FCM_SERVER_KEY",
+                    "value": "AAAA49nIBCE:APA91bHv4FIQrCJCuQQES9WMM_FvenEq6Tq6JEXTCBiO3UegvrcVA-yFeU624dyz3YTcxrvYwKNFj6ja_Qr49g7W1YW3xJyju7H5H7vGeBV9zvW6tyhqDa4Ut1rfZsRu_B4yuixmS__4"
+                },
+                {
+                    "name": "DEFAULT_FROM_EMAIL",
+                    "value": "noreply@sappay.net"
+                },
+                {
+                    "name": "DJANGO_AWS_ACCESS_KEY_ID",
+                    "value": "AKIAWWO23Q2JJBY272R5"
+                },
+                {
+                    "name": "RDS_USERNAME",
+                    "value": "postgres"
+                },
+                {
+                    "name": "EMAIL_PORT",
+                    "value": "465"
+                },
+                {
+                    "name": "DJANGO_ADMIN_URL",
+                    "value": "/admin/"
+                },
+                {
+                    "name": "DJANGO_AWS_SECRET_ACCESS_KEY",
+                    "value": "vaqXb2f2QXMnxzDL39WhcmuAu657WcKLGNMKwWn1"
+                },
+                {
+                    "name": "ERPNEXT_BASE_URL_PROD",
+                    "value": "https://stage.accounts.sappay.net"
+                },
+                {
+                    "name": "RDS_DB_NAME",
+                    "value": "ebdb"
+                },
+                {
+                    "name": "DJANGO_EMAIL_BACKEND",
+                    "value": "django.core.mail.backends.smtp.EmailBackend"
+                },
+                {
+                    "name": "DJANGO_SETTINGS_MODULE",
+                    "value": "config.settings.production"
+                },
+                {
+                    "name": "ERPNEXT_API_KEY_DEV",
+                    "value": "3c9655bd0d40a6f"
+                },
+                {
+                    "name": "ERPNEXT_USERNAME_PROD",
+                    "value": "administrator"
+                },
+                {
+                    "name": "RDS_PASSWORD",
+                    "value": "temas14fss95vabAm"
+                },
+                {
+                    "name": "RDS_HOSTNAME",
+                    "value": "awseb-e-bntv8bqqyb-stack-awsebrdsdatabase-gi5rbgnid8hy.cfzrdlloiw6j.eu-west-3.rds.amazonaws.com"
+                },
+                {
+                    "name": "DJANGO_AWS_STORAGE_BUCKET_NAME",
+                    "value": "sappay-dev"
+                },
+                {
+                    "name": "DJANGO_ALLOWED_HOSTS",
+                    "value": "*"
+                },
+                {
+                    "name": "ERPNEXT_API_SECRET_PROD",
+                    "value": "0b37686771f1dd5"
+                },
+                {
+                    "name": "EMAIL_HOST_PASSWORD",
+                    "value": "BMyefMDLiAM0XQqfvjXWfW2LeAabpRF7YYOO03BIQN8O"
+                },
+                {
+                    "name": "EMAIL_HOST_USER",
+                    "value": "AKIAWWO23Q2JHNU4CDTT"
+                },
+                {
+                    "name": "ERPNEXT_API_KEY_PROD",
+                    "value": "3c9655bd0d40a6f"
+                },
+                {
+                    "name": "ERPNEXT_API_SECRET_DEV",
+                    "value": "0b37686771f1dd5"
+                },
+                {
+                    "name": "EMAIL_USE_SSL",
+                    "value": "False"
+                },
+                {
+                    "name": "USE_EXTERNAL_STORAGE",
+                    "value": "True"
+                }
+            ],
+            "mountPoints": [],
+            "volumesFrom": []
+        },
+        {
+            "name": "celery",
+            "image": "460557354642.dkr.ecr.eu-west-3.amazonaws.com/sappay-django-api",
+            "cpu": 0,
+            "memory": 900,
+            "links": [
+                "redis"
+            ],
+            "portMappings": [],
+            "essential": true,
+            "environment": [
+                {
+                    "name": "ERPNEXT_USERNAME_DEV",
+                    "value": "administrator"
+                },
+                {
+                    "name": "DJANGO_SECRET_KEY",
+                    "value": "egNQT9MBeVlYn/AazzfXOONaR+tuzIzsawWUaMUU6T3ZkDE23akudLxoTV4tk6P+"
+                },
+                {
+                    "name": "EMAIL_HOST",
+                    "value": "email-smtp.eu-west-3.amazonaws.com"
+                },
+                {
+                    "name": "DATABASE_URL",
+                    "value": "postgres://SapPay-Staging:AVNS_7c_nZEKzWkUI8HPlxO6@sappay-staging-db-do-user-12029657-0.b.db.ondigitalocean.com:25060/staging"
+                },
+                {
+                    "name": "MOOV_MONEY_AUTHORIZATION",
+                    "value": "Basic U0FQUEFZOjFuR3JVdng1dGdXWndCVg=="
+                },
+                {
+                    "name": "ERPNEXT_PASSWORD_PROD",
+                    "value": "Test@1234"
+                },
+                {
+                    "name": "RDS_PORT",
+                    "value": "5432"
+                },
+                {
+                    "name": "ERPNEXT_PASSWORD_DEV",
+                    "value": "Test@1234"
+                },
+                {
+                    "name": "ERPNEXT_BASE_URL_DEV",
+                    "value": "https://stage.accounts.sappay.net"
+                },
+                {
+                    "name": "FCM_SERVER_KEY",
+                    "value": "AAAA49nIBCE:APA91bHv4FIQrCJCuQQES9WMM_FvenEq6Tq6JEXTCBiO3UegvrcVA-yFeU624dyz3YTcxrvYwKNFj6ja_Qr49g7W1YW3xJyju7H5H7vGeBV9zvW6tyhqDa4Ut1rfZsRu_B4yuixmS__4"
+                },
+                {
+                    "name": "DEFAULT_FROM_EMAIL",
+                    "value": "noreply@sappay.net"
+                },
+                {
+                    "name": "DJANGO_AWS_ACCESS_KEY_ID",
+                    "value": "AKIAWWO23Q2JJBY272R5"
+                },
+                {
+                    "name": "RDS_USERNAME",
+                    "value": "postgres"
+                },
+                {
+                    "name": "EMAIL_PORT",
+                    "value": "465"
+                },
+                {
+                    "name": "DJANGO_ADMIN_URL",
+                    "value": "/admin/"
+                },
+                {
+                    "name": "DJANGO_AWS_SECRET_ACCESS_KEY",
+                    "value": "vaqXb2f2QXMnxzDL39WhcmuAu657WcKLGNMKwWn1"
+                },
+                {
+                    "name": "ERPNEXT_BASE_URL_PROD",
+                    "value": "https://stage.accounts.sappay.net"
+                },
+                {
+                    "name": "CELERY_BROKER_URL",
+                    "value": "redis://redis:6379"
+                },
+                {
+                    "name": "RDS_DB_NAME",
+                    "value": "ebdb"
+                },
+                {
+                    "name": "DJANGO_EMAIL_BACKEND",
+                    "value": "django.core.mail.backends.smtp.EmailBackend"
+                },
+                {
+                    "name": "DJANGO_SETTINGS_MODULE",
+                    "value": "config.settings.production"
+                },
+                {
+                    "name": "ERPNEXT_API_KEY_DEV",
+                    "value": "3c9655bd0d40a6f"
+                },
+                {
+                    "name": "ERPNEXT_USERNAME_PROD",
+                    "value": "administrator"
+                },
+                {
+                    "name": "RDS_PASSWORD",
+                    "value": "temas14fss95vabAm"
+                },
+                {
+                    "name": "RDS_HOSTNAME",
+                    "value": "awseb-e-bntv8bqqyb-stack-awsebrdsdatabase-gi5rbgnid8hy.cfzrdlloiw6j.eu-west-3.rds.amazonaws.com"
+                },
+                {
+                    "name": "DJANGO_AWS_STORAGE_BUCKET_NAME",
+                    "value": "sappay-dev"
+                },
+                {
+                    "name": "DJANGO_ALLOWED_HOSTS",
+                    "value": "*"
+                },
+                {
+                    "name": "ERPNEXT_API_SECRET_PROD",
+                    "value": "0b37686771f1dd5"
+                },
+                {
+                    "name": "EMAIL_HOST_PASSWORD",
+                    "value": "BMyefMDLiAM0XQqfvjXWfW2LeAabpRF7YYOO03BIQN8O"
+                },
+                {
+                    "name": "EMAIL_HOST_USER",
+                    "value": "AKIAWWO23Q2JHNU4CDTT"
+                },
+                {
+                    "name": "ERPNEXT_API_KEY_PROD",
+                    "value": "3c9655bd0d40a6f"
+                },
+                {
+                    "name": "START",
+                    "value": "celery"
+                },
+                {
+                    "name": "ERPNEXT_API_SECRET_DEV",
+                    "value": "0b37686771f1dd5"
+                },
+                {
+                    "name": "EMAIL_USE_SSL",
+                    "value": "False"
+                },
+                {
+                    "name": "USE_EXTERNAL_STORAGE",
+                    "value": "True"
+                },
+                {
+                    "name": "REDIS_URL",
+                    "value": "redis://redis:6379"
+                }
+            ],
+            "mountPoints": [],
+            "volumesFrom": []
+        },
+        {
+            "name": "celery-beat",
+            "image": "460557354642.dkr.ecr.eu-west-3.amazonaws.com/sappay-django-api",
+            "cpu": 0,
+            "memory": 500,
+            "links": [
+                "redis"
+            ],
+            "portMappings": [],
+            "essential": true,
+            "environment": [
+                {
+                    "name": "ERPNEXT_USERNAME_DEV",
+                    "value": "administrator"
+                },
+                {
+                    "name": "DJANGO_SECRET_KEY",
+                    "value": "egNQT9MBeVlYn/AazzfXOONaR+tuzIzsawWUaMUU6T3ZkDE23akudLxoTV4tk6P+"
+                },
+                {
+                    "name": "EMAIL_HOST",
+                    "value": "email-smtp.eu-west-3.amazonaws.com"
+                },
+                {
+                    "name": "DATABASE_URL",
+                    "value": "postgres://SapPay-Staging:AVNS_7c_nZEKzWkUI8HPlxO6@sappay-staging-db-do-user-12029657-0.b.db.ondigitalocean.com:25060/staging"
+                },
+                {
+                    "name": "MOOV_MONEY_AUTHORIZATION",
+                    "value": "Basic U0FQUEFZOjFuR3JVdng1dGdXWndCVg=="
+                },
+                {
+                    "name": "ERPNEXT_PASSWORD_PROD",
+                    "value": "Test@1234"
+                },
+                {
+                    "name": "RDS_PORT",
+                    "value": "5432"
+                },
+                {
+                    "name": "ERPNEXT_PASSWORD_DEV",
+                    "value": "Test@1234"
+                },
+                {
+                    "name": "ERPNEXT_BASE_URL_DEV",
+                    "value": "https://stage.accounts.sappay.net"
+                },
+                {
+                    "name": "FCM_SERVER_KEY",
+                    "value": "AAAA49nIBCE:APA91bHv4FIQrCJCuQQES9WMM_FvenEq6Tq6JEXTCBiO3UegvrcVA-yFeU624dyz3YTcxrvYwKNFj6ja_Qr49g7W1YW3xJyju7H5H7vGeBV9zvW6tyhqDa4Ut1rfZsRu_B4yuixmS__4"
+                },
+                {
+                    "name": "DEFAULT_FROM_EMAIL",
+                    "value": "noreply@sappay.net"
+                },
+                {
+                    "name": "DJANGO_AWS_ACCESS_KEY_ID",
+                    "value": "AKIAWWO23Q2JJBY272R5"
+                },
+                {
+                    "name": "RDS_USERNAME",
+                    "value": "postgres"
+                },
+                {
+                    "name": "EMAIL_PORT",
+                    "value": "465"
+                },
+                {
+                    "name": "DJANGO_ADMIN_URL",
+                    "value": "/admin/"
+                },
+                {
+                    "name": "DJANGO_AWS_SECRET_ACCESS_KEY",
+                    "value": "vaqXb2f2QXMnxzDL39WhcmuAu657WcKLGNMKwWn1"
+                },
+                {
+                    "name": "ERPNEXT_BASE_URL_PROD",
+                    "value": "https://stage.accounts.sappay.net"
+                },
+                {
+                    "name": "CELERY_BROKER_URL",
+                    "value": "redis://redis:6379"
+                },
+                {
+                    "name": "RDS_DB_NAME",
+                    "value": "ebdb"
+                },
+                {
+                    "name": "DJANGO_EMAIL_BACKEND",
+                    "value": "django.core.mail.backends.smtp.EmailBackend"
+                },
+                {
+                    "name": "DJANGO_SETTINGS_MODULE",
+                    "value": "config.settings.production"
+                },
+                {
+                    "name": "ERPNEXT_API_KEY_DEV",
+                    "value": "3c9655bd0d40a6f"
+                },
+                {
+                    "name": "ERPNEXT_USERNAME_PROD",
+                    "value": "administrator"
+                },
+                {
+                    "name": "RDS_PASSWORD",
+                    "value": "temas14fss95vabAm"
+                },
+                {
+                    "name": "RDS_HOSTNAME",
+                    "value": "awseb-e-bntv8bqqyb-stack-awsebrdsdatabase-gi5rbgnid8hy.cfzrdlloiw6j.eu-west-3.rds.amazonaws.com"
+                },
+                {
+                    "name": "DJANGO_AWS_STORAGE_BUCKET_NAME",
+                    "value": "sappay-dev"
+                },
+                {
+                    "name": "DJANGO_ALLOWED_HOSTS",
+                    "value": "*"
+                },
+                {
+                    "name": "ERPNEXT_API_SECRET_PROD",
+                    "value": "0b37686771f1dd5"
+                },
+                {
+                    "name": "EMAIL_HOST_PASSWORD",
+                    "value": "BMyefMDLiAM0XQqfvjXWfW2LeAabpRF7YYOO03BIQN8O"
+                },
+                {
+                    "name": "EMAIL_HOST_USER",
+                    "value": "AKIAWWO23Q2JHNU4CDTT"
+                },
+                {
+                    "name": "ERPNEXT_API_KEY_PROD",
+                    "value": "3c9655bd0d40a6f"
+                },
+                {
+                    "name": "START",
+                    "value": "beat"
+                },
+                {
+                    "name": "ERPNEXT_API_SECRET_DEV",
+                    "value": "0b37686771f1dd5"
+                },
+                {
+                    "name": "EMAIL_USE_SSL",
+                    "value": "False"
+                },
+                {
+                    "name": "USE_EXTERNAL_STORAGE",
+                    "value": "True"
+                },
+                {
+                    "name": "REDIS_URL",
+                    "value": "redis://redis:6379"
+                }
+            ],
+            "mountPoints": [],
+            "volumesFrom": []
+        },
+        {
+            "name": "migration",
+            "image": "460557354642.dkr.ecr.eu-west-3.amazonaws.com/sappay-django-api",
+            "cpu": 0,
+            "memory": 200,
+            "portMappings": [],
+            "essential": false,
+            "environment": [
+                {
+                    "name": "ERPNEXT_USERNAME_DEV",
+                    "value": "administrator"
+                },
+                {
+                    "name": "DJANGO_SECRET_KEY",
+                    "value": "egNQT9MBeVlYn/AazzfXOONaR+tuzIzsawWUaMUU6T3ZkDE23akudLxoTV4tk6P+"
+                },
+                {
+                    "name": "EMAIL_HOST",
+                    "value": "email-smtp.eu-west-3.amazonaws.com"
+                },
+                {
+                    "name": "DATABASE_URL",
+                    "value": "postgres://SapPay-Staging:AVNS_7c_nZEKzWkUI8HPlxO6@sappay-staging-db-do-user-12029657-0.b.db.ondigitalocean.com:25060/staging"
+                },
+                {
+                    "name": "MOOV_MONEY_AUTHORIZATION",
+                    "value": "Basic U0FQUEFZOjFuR3JVdng1dGdXWndCVg=="
+                },
+                {
+                    "name": "ERPNEXT_PASSWORD_PROD",
+                    "value": "Test@1234"
+                },
+                {
+                    "name": "RDS_PORT",
+                    "value": "5432"
+                },
+                {
+                    "name": "ERPNEXT_PASSWORD_DEV",
+                    "value": "Test@1234"
+                },
+                {
+                    "name": "ERPNEXT_BASE_URL_DEV",
+                    "value": "https://stage.accounts.sappay.net"
+                },
+                {
+                    "name": "FCM_SERVER_KEY",
+                    "value": "AAAA49nIBCE:APA91bHv4FIQrCJCuQQES9WMM_FvenEq6Tq6JEXTCBiO3UegvrcVA-yFeU624dyz3YTcxrvYwKNFj6ja_Qr49g7W1YW3xJyju7H5H7vGeBV9zvW6tyhqDa4Ut1rfZsRu_B4yuixmS__4"
+                },
+                {
+                    "name": "DEFAULT_FROM_EMAIL",
+                    "value": "noreply@sappay.net"
+                },
+                {
+                    "name": "DJANGO_AWS_ACCESS_KEY_ID",
+                    "value": "AKIAWWO23Q2JJBY272R5"
+                },
+                {
+                    "name": "RDS_USERNAME",
+                    "value": "postgres"
+                },
+                {
+                    "name": "EMAIL_PORT",
+                    "value": "465"
+                },
+                {
+                    "name": "DJANGO_ADMIN_URL",
+                    "value": "/admin/"
+                },
+                {
+                    "name": "DJANGO_AWS_SECRET_ACCESS_KEY",
+                    "value": "vaqXb2f2QXMnxzDL39WhcmuAu657WcKLGNMKwWn1"
+                },
+                {
+                    "name": "ERPNEXT_BASE_URL_PROD",
+                    "value": "https://stage.accounts.sappay.net"
+                },
+                {
+                    "name": "CELERY_BROKER_URL",
+                    "value": "redis://redis:6379"
+                },
+                {
+                    "name": "RDS_DB_NAME",
+                    "value": "ebdb"
+                },
+                {
+                    "name": "DJANGO_EMAIL_BACKEND",
+                    "value": "django.core.mail.backends.smtp.EmailBackend"
+                },
+                {
+                    "name": "DJANGO_SETTINGS_MODULE",
+                    "value": "config.settings.production"
+                },
+                {
+                    "name": "ERPNEXT_API_KEY_DEV",
+                    "value": "3c9655bd0d40a6f"
+                },
+                {
+                    "name": "ERPNEXT_USERNAME_PROD",
+                    "value": "administrator"
+                },
+                {
+                    "name": "RDS_PASSWORD",
+                    "value": "temas14fss95vabAm"
+                },
+                {
+                    "name": "RDS_HOSTNAME",
+                    "value": "awseb-e-bntv8bqqyb-stack-awsebrdsdatabase-gi5rbgnid8hy.cfzrdlloiw6j.eu-west-3.rds.amazonaws.com"
+                },
+                {
+                    "name": "DJANGO_AWS_STORAGE_BUCKET_NAME",
+                    "value": "sappay-dev"
+                },
+                {
+                    "name": "DJANGO_ALLOWED_HOSTS",
+                    "value": "*"
+                },
+                {
+                    "name": "ERPNEXT_API_SECRET_PROD",
+                    "value": "0b37686771f1dd5"
+                },
+                {
+                    "name": "EMAIL_HOST_PASSWORD",
+                    "value": "BMyefMDLiAM0XQqfvjXWfW2LeAabpRF7YYOO03BIQN8O"
+                },
+                {
+                    "name": "EMAIL_HOST_USER",
+                    "value": "AKIAWWO23Q2JHNU4CDTT"
+                },
+                {
+                    "name": "ERPNEXT_API_KEY_PROD",
+                    "value": "3c9655bd0d40a6f"
+                },
+                {
+                    "name": "START",
+                    "value": "migrate"
+                },
+                {
+                    "name": "ERPNEXT_API_SECRET_DEV",
+                    "value": "0b37686771f1dd5"
+                },
+                {
+                    "name": "EMAIL_USE_SSL",
+                    "value": "False"
+                },
+                {
+                    "name": "USE_EXTERNAL_STORAGE",
+                    "value": "True"
+                },
+                {
+                    "name": "REDIS_URL",
+                    "value": "redis://redis:6379"
+                }
+            ],
+            "mountPoints": [],
+            "volumesFrom": []
+        }
+    ]
+}
